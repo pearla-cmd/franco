@@ -1,0 +1,670 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHONEX | Products</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080d18;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100%;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #0c1424;
+            border-bottom: 1px solid #1d2a40;
+        }
+
+        .logo {
+            color: #38aaff;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #38aaff;
+        }
+
+        .products-section {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            padding: 40px 6%;
+        }
+
+        .products-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .products-heading h1 {
+            font-size: clamp(26px, 4vw, 36px);
+        }
+
+        .products-heading h1 span {
+            color: #38aaff;
+        }
+
+        .search-box {
+            width: 280px;
+            max-width: 100%;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #263650;
+            border-radius: 8px;
+            background: #111c2f;
+            color: white;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-box input:focus {
+            border-color: #38aaff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .product-card {
+            background: #101a2b;
+            border: 1px solid #202f46;
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 0;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #38aaff;
+        }
+
+        .product-image {
+            height: 220px;
+            padding: 16px;
+            background: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 17px;
+        }
+
+        .category {
+            color: #38aaff;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 9px;
+        }
+
+        .product-info h2 {
+            font-size: 17px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #9ba9bc;
+            font-size: 13px;
+            line-height: 1.6;
+            min-height: 42px;
+            margin-bottom: 14px;
+        }
+
+        .price {
+            color: #38aaff;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .add-button {
+            width: 100%;
+            padding: 12px 8px;
+            background: #168be0;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-button:hover {
+            background: #0873bf;
+        }
+
+        .empty-message {
+            display: none;
+            color: #aab8cb;
+            text-align: center;
+            padding: 40px 10px;
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 1050px) {
+            .product-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 18px;
+            }
+
+            header {
+                padding: 20px 4%;
+            }
+
+            nav {
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            header {
+                justify-content: center;
+            }
+
+            .logo {
+                text-align: center;
+            }
+
+            nav {
+                width: 100%;
+                gap: 17px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+
+            .products-section {
+                padding: 28px 4%;
+            }
+
+            .product-image {
+                height: 185px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 18px 12px;
+                gap: 16px;
+            }
+
+            .logo {
+                font-size: 25px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .products-section {
+                padding: 25px 12px;
+            }
+
+            .products-heading {
+                align-items: stretch;
+                margin-bottom: 22px;
+            }
+
+            .products-heading h1 {
+                font-size: 27px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .product-grid {
+                gap: 10px;
+            }
+
+            .product-image {
+                height: 145px;
+                padding: 8px;
+            }
+
+            .product-info {
+                padding: 11px;
+            }
+
+            .product-info h2 {
+                font-size: 14px;
+            }
+
+            .description {
+                font-size: 12px;
+                min-height: 58px;
+            }
+
+            .price {
+                font-size: 16px;
+            }
+
+            .add-button {
+                font-size: 12px;
+                padding: 10px 5px;
+            }
+        }
+
+        @media (max-width: 330px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 220px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">PHONEX</a>
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="products.html" class="active">Products</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+			<a href="index.html" class="active">Log Out</a>
+        </nav>
+    </header>
+
+    <main class="products-section">
+
+        <div class="products-heading">
+            <h1>Our <span>Products</span></h1>
+
+            <div class="search-box">
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search smartphones..."
+                    aria-label="Search smartphones"
+                >
+            </div>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+
+            <article class="product-card" data-name="iphone 16 pro max apple">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=85" alt="iPhone 16 Pro Max">
+                </div>
+                <div class="product-info">
+                    <p class="category">Apple</p>
+                    <h2>iPhone 16 Pro Max</h2>
+                    <p class="description">Premium performance and a stunning display.</p>
+                    <p class="price">₱79,990</p>
+                    <button class="add-button" onclick="addToCart('iPhone 16 Pro Max', 79990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="samsung galaxy s25 ultra">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=85" alt="Samsung Galaxy S25 Ultra">
+                </div>
+                <div class="product-info">
+                    <p class="category">Samsung</p>
+                    <h2>Galaxy S25 Ultra</h2>
+                    <p class="description">Advanced photography and powerful performance.</p>
+                    <p class="price">₱84,990</p>
+                    <button class="add-button" onclick="addToCart('Galaxy S25 Ultra', 84990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="iphone 15 apple">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=85" alt="iPhone 15">
+                </div>
+                <div class="product-info">
+                    <p class="category">Apple</p>
+                    <h2>iPhone 15</h2>
+                    <p class="description">A sleek smartphone for everyday use.</p>
+                    <p class="price">₱39,990</p>
+                    <button class="add-button" onclick="addToCart('iPhone 15', 39990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="samsung galaxy a56">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=85" alt="Samsung Galaxy A56">
+                </div>
+                <div class="product-info">
+                    <p class="category">Samsung</p>
+                    <h2>Galaxy A56</h2>
+                    <p class="description">A stylish phone for school and entertainment.</p>
+                    <p class="price">₱24,990</p>
+                    <button class="add-button" onclick="addToCart('Galaxy A56', 24990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="xiaomi redmi note 14 pro">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=85" alt="Redmi Note 14 Pro">
+                </div>
+                <div class="product-info">
+                    <p class="category">Xiaomi</p>
+                    <h2>Redmi Note 14 Pro</h2>
+                    <p class="description">A vivid screen and smooth everyday performance.</p>
+                    <p class="price">₱17,999</p>
+                    <button class="add-button" onclick="addToCart('Redmi Note 14 Pro', 17999)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="google pixel 9">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=85" alt="Google Pixel 9">
+                </div>
+                <div class="product-info">
+                    <p class="category">Google</p>
+                    <h2>Google Pixel 9</h2>
+                    <p class="description">Smart features with a clean, modern design.</p>
+                    <p class="price">₱49,990</p>
+                    <button class="add-button" onclick="addToCart('Google Pixel 9', 49990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="samsung galaxy z flip 6">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=85" alt="Galaxy Z Flip 6">
+                </div>
+                <div class="product-info">
+                    <p class="category">Samsung</p>
+                    <h2>Galaxy Z Flip 6</h2>
+                    <p class="description">A compact foldable phone with a modern design.</p>
+                    <p class="price">₱64,990</p>
+                    <button class="add-button" onclick="addToCart('Galaxy Z Flip 6', 64990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="samsung galaxy z fold 6">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=85" alt="Galaxy Z Fold 6">
+                </div>
+                <div class="product-info">
+                    <p class="category">Samsung</p>
+                    <h2>Galaxy Z Fold 6</h2>
+                    <p class="description">A foldable phone with a large display.</p>
+                    <p class="price">₱99,990</p>
+                    <button class="add-button" onclick="addToCart('Galaxy Z Fold 6', 99990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="iphone 16 apple">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=85" alt="iPhone 16">
+                </div>
+                <div class="product-info">
+                    <p class="category">Apple</p>
+                    <h2>iPhone 16</h2>
+                    <p class="description">A powerful everyday smartphone from Apple.</p>
+                    <p class="price">₱54,990</p>
+                    <button class="add-button" onclick="addToCart('iPhone 16', 54990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="iphone 16 plus apple">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=85" alt="iPhone 16 Plus">
+                </div>
+                <div class="product-info">
+                    <p class="category">Apple</p>
+                    <h2>iPhone 16 Plus</h2>
+                    <p class="description">Enjoy a larger screen for videos and games.</p>
+                    <p class="price">₱64,990</p>
+                    <button class="add-button" onclick="addToCart('iPhone 16 Plus', 64990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="xiaomi 14 ultra">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=85" alt="Xiaomi 14 Ultra">
+                </div>
+                <div class="product-info">
+                    <p class="category">Xiaomi</p>
+                    <h2>Xiaomi 14 Ultra</h2>
+                    <p class="description">A premium phone for photography lovers.</p>
+                    <p class="price">₱69,990</p>
+                    <button class="add-button" onclick="addToCart('Xiaomi 14 Ultra', 69990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="redmi note 13 xiaomi">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=85" alt="Redmi Note 13">
+                </div>
+                <div class="product-info">
+                    <p class="category">Xiaomi</p>
+                    <h2>Redmi Note 13</h2>
+                    <p class="description">An affordable phone for daily activities.</p>
+                    <p class="price">₱10,999</p>
+                    <button class="add-button" onclick="addToCart('Redmi Note 13', 10999)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="oppo reno 12">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=85" alt="OPPO Reno 12">
+                </div>
+                <div class="product-info">
+                    <p class="category">OPPO</p>
+                    <h2>OPPO Reno 12</h2>
+                    <p class="description">A stylish phone for photos and entertainment.</p>
+                    <p class="price">₱25,999</p>
+                    <button class="add-button" onclick="addToCart('OPPO Reno 12', 25999)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="oppo a60">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=85" alt="OPPO A60">
+                </div>
+                <div class="product-info">
+                    <p class="category">OPPO</p>
+                    <h2>OPPO A60</h2>
+                    <p class="description">A practical smartphone for everyday use.</p>
+                    <p class="price">₱8,999</p>
+                    <button class="add-button" onclick="addToCart('OPPO A60', 8999)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="vivo v40">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=85" alt="Vivo V40">
+                </div>
+                <div class="product-info">
+                    <p class="category">Vivo</p>
+                    <h2>Vivo V40</h2>
+                    <p class="description">A modern phone with a sleek design.</p>
+                    <p class="price">₱26,999</p>
+                    <button class="add-button" onclick="addToCart('Vivo V40', 26999)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="vivo y28">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=85" alt="Vivo Y28">
+                </div>
+                <div class="product-info">
+                    <p class="category">Vivo</p>
+                    <h2>Vivo Y28</h2>
+                    <p class="description">A budget-friendly phone for daily tasks.</p>
+                    <p class="price">₱8,999</p>
+                    <button class="add-button" onclick="addToCart('Vivo Y28', 8999)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="realme 13 pro">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=85" alt="Realme 13 Pro">
+                </div>
+                <div class="product-info">
+                    <p class="category">Realme</p>
+                    <h2>Realme 13 Pro</h2>
+                    <p class="description">A stylish device for photos and multitasking.</p>
+                    <p class="price">₱19,999</p>
+                    <button class="add-button" onclick="addToCart('Realme 13 Pro', 19999)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="realme c65">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=85" alt="Realme C65">
+                </div>
+                <div class="product-info">
+                    <p class="category">Realme</p>
+                    <h2>Realme C65</h2>
+                    <p class="description">A simple and affordable everyday phone.</p>
+                    <p class="price">₱7,999</p>
+                    <button class="add-button" onclick="addToCart('Realme C65', 7999)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="google pixel 8a">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=85" alt="Google Pixel 8a">
+                </div>
+                <div class="product-info">
+                    <p class="category">Google</p>
+                    <h2>Google Pixel 8a</h2>
+                    <p class="description">A smart phone with helpful everyday features.</p>
+                    <p class="price">₱29,990</p>
+                    <button class="add-button" onclick="addToCart('Google Pixel 8a', 29990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <article class="product-card" data-name="oneplus 12">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=85" alt="OnePlus 12">
+                </div>
+                <div class="product-info">
+                    <p class="category">OnePlus</p>
+                    <h2>OnePlus 12</h2>
+                    <p class="description">Smooth performance for apps and gaming.</p>
+                    <p class="price">₱45,990</p>
+                    <button class="add-button" onclick="addToCart('OnePlus 12', 45990)">Add to Cart</button>
+                </div>
+            </article>
+
+            <p class="empty-message" id="emptyMessage">No products found.</p>
+
+        </div>
+    </main>
+
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const productCards = document.querySelectorAll(".product-card");
+        const emptyMessage = document.getElementById("emptyMessage");
+
+        searchInput.addEventListener("input", function () {
+            const searchText = this.value.toLowerCase().trim();
+            let visibleProducts = 0;
+
+            productCards.forEach(function (card) {
+                const productName = card.dataset.name;
+                const matches = productName.includes(searchText);
+
+                card.style.display = matches ? "" : "none";
+
+                if (matches) {
+                    visibleProducts++;
+                }
+            });
+
+            emptyMessage.style.display = visibleProducts === 0 ? "block" : "none";
+        });
+
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem("phonexCart")) || [];
+
+            const existingProduct = cart.find(function (item) {
+                return item.name === name;
+            });
+
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+
+            localStorage.setItem("phonexCart", JSON.stringify(cart));
+            alert(name + " added to cart!");
+        }
+    </script>
+
+</body>
+</html>

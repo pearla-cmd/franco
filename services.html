@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHONEX | Services</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080d18;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100%;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #0c1424;
+            border-bottom: 1px solid #1d2a40;
+        }
+
+        .logo {
+            color: #38aaff;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #38aaff;
+        }
+
+        .services-section {
+            width: 100%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 45px 6%;
+        }
+
+        .services-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .services-heading h1 {
+            font-size: clamp(28px, 4vw, 38px);
+            margin-bottom: 12px;
+        }
+
+        .services-heading h1 span {
+            color: #38aaff;
+        }
+
+        .services-heading p {
+            color: #9ba9bc;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .service-card {
+            background: #101a2b;
+            border: 1px solid #202f46;
+            border-radius: 14px;
+            padding: 28px 22px;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #38aaff;
+            box-shadow: 0 10px 30px rgba(0, 140, 255, 0.08);
+        }
+
+        .service-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #132b45;
+            border: 1px solid #214b70;
+            border-radius: 12px;
+            font-size: 27px;
+            margin-bottom: 22px;
+        }
+
+        .service-card h2 {
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #9ba9bc;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 900px) {
+            header {
+                padding: 20px 4%;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                padding: 18px 12px;
+                gap: 16px;
+            }
+
+            .logo {
+                font-size: 25px;
+                text-align: center;
+            }
+
+            nav {
+                width: 100%;
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .services-section {
+                padding: 30px 16px;
+            }
+
+            .services-heading {
+                margin-bottom: 25px;
+            }
+
+            .services-heading p {
+                font-size: 14px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .service-card {
+                padding: 23px 20px;
+            }
+
+            .service-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 24px;
+                margin-bottom: 17px;
+            }
+
+            .service-card h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">PHONEX</a>
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+			<a href="index.html" class="active">Log Out</a>
+        </nav>
+    </header>
+
+    <main class="services-section">
+
+        <div class="services-heading">
+            <h1>Our <span>Services</span></h1>
+            <p>Reliable smartphone services to keep your device working at its best.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <article class="service-card">
+                <div class="service-icon">🔧</div>
+                <h2>Phone Repair</h2>
+                <p>Get help with common smartphone issues, including damaged screens, charging problems, and other device concerns.</p>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h2>Warranty Assistance</h2>
+                <p>Receive guidance on warranty coverage, product concerns, and available support for eligible devices.</p>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">📱</div>
+                <h2>Device Setup</h2>
+                <p>Get assistance setting up your new smartphone, connecting accounts, and adjusting essential settings.</p>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🔄</div>
+                <h2>Data Transfer</h2>
+                <p>Move supported contacts, photos, and other personal files from your old phone to your new device.</p>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🔋</div>
+                <h2>Battery Assistance</h2>
+                <p>Get help identifying battery performance concerns and learning how to care for your smartphone battery.</p>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">💬</div>
+                <h2>Customer Support</h2>
+                <p>Ask questions about products, device features, order concerns, and available services through our support team.</p>
+            </article>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

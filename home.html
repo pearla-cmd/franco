@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHONEX | Home</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080d18;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            width: 100%;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #0c1424;
+            border-bottom: 1px solid #1d2a40;
+        }
+
+        .logo {
+            color: #38aaff;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #38aaff;
+        }
+
+        .hero {
+            min-height: 590px;
+            padding: 65px 6%;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            align-items: center;
+            gap: 45px;
+            background:
+                radial-gradient(circle at 80% 45%, #123c63 0%, transparent 38%),
+                linear-gradient(135deg, #080d18, #0d1a2d);
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .tagline {
+            display: inline-block;
+            color: #38aaff;
+            border: 1px solid #21466a;
+            background: #0d1d31;
+            padding: 9px 15px;
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 65px);
+            line-height: 1.12;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #38aaff;
+        }
+
+        .hero p {
+            color: #aab8cb;
+            font-size: 15px;
+            line-height: 1.9;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-button {
+            display: inline-block;
+            padding: 15px 25px;
+            border-radius: 8px;
+            background: #168be0;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary-button:hover {
+            background: #0873bf;
+            transform: translateY(-3px);
+        }
+
+        .secondary-button {
+            display: inline-block;
+            padding: 14px 24px;
+            border: 1px solid #34465f;
+            border-radius: 8px;
+            color: #dbeafe;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .secondary-button:hover {
+            border-color: #38aaff;
+            color: #38aaff;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .hero-image img {
+            display: block;
+            width: 100%;
+            max-width: 480px;
+            height: 390px;
+            object-fit: contain;
+            border-radius: 18px;
+            filter: drop-shadow(0 20px 30px #00000055);
+        }
+
+        .features {
+            padding: 35px 6%;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            background: #0a1220;
+            border-top: 1px solid #1d2a40;
+            border-bottom: 1px solid #1d2a40;
+        }
+
+        .feature {
+            padding: 24px 20px;
+            text-align: center;
+            background: #101a2b;
+            border: 1px solid #202f46;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            border-color: #38aaff;
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            margin-bottom: 13px;
+        }
+
+        .feature h2 {
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #9ba9bc;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .featured-section {
+            max-width: 1400px;
+            margin: auto;
+            padding: 60px 6%;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(25px, 4vw, 34px);
+        }
+
+        .section-heading h2 span {
+            color: #38aaff;
+        }
+
+        .view-all {
+            color: #38aaff;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .view-all:hover {
+            color: #9bd8ff;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .featured-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid #202f46;
+            background: #101a2b;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .featured-card:hover {
+            border-color: #38aaff;
+            transform: translateY(-5px);
+        }
+
+        .featured-card img {
+            width: 100%;
+            height: 190px;
+            padding: 12px;
+            object-fit: contain;
+            background: #f1f5f9;
+            display: block;
+        }
+
+        .featured-info {
+            padding: 17px;
+        }
+
+        .featured-info .category {
+            color: #38aaff;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .featured-info h3 {
+            font-size: 16px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .featured-info .price {
+            color: #38aaff;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .featured-info a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            padding: 11px;
+            background: #168be0;
+            color: white;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .featured-info a:hover {
+            background: #0873bf;
+        }
+
+        .cta {
+            margin: 0 6% 60px;
+            padding: 45px 25px;
+            text-align: center;
+            border: 1px solid #21466a;
+            border-radius: 16px;
+            background: linear-gradient(120deg, #101d30, #102b46);
+        }
+
+        .cta h2 {
+            font-size: clamp(24px, 4vw, 34px);
+            margin-bottom: 15px;
+        }
+
+        .cta h2 span {
+            color: #38aaff;
+        }
+
+        .cta p {
+            color: #aab8cb;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            padding: 25px 6%;
+            background: #0c1424;
+            border-top: 1px solid #1d2a40;
+            text-align: center;
+            color: #9ba9bc;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        footer span {
+            color: #38aaff;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1050px) {
+            header {
+                padding: 20px 4%;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            .hero {
+                padding: 55px 4%;
+                gap: 25px;
+            }
+
+            .featured-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 750px) {
+            header {
+                justify-content: center;
+            }
+
+            .logo {
+                text-align: center;
+            }
+
+            nav {
+                width: 100%;
+                gap: 17px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 45px 5%;
+                gap: 25px;
+            }
+
+            .hero-content {
+                margin: auto;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image img {
+                height: 300px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                padding: 28px 5%;
+            }
+
+            .featured-section {
+                padding: 40px 4%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 18px 12px;
+                gap: 16px;
+            }
+
+            .logo {
+                font-size: 25px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 35px 12px;
+            }
+
+            .hero h1 {
+                font-size: 37px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-buttons a {
+                text-align: center;
+            }
+
+            .hero-image img {
+                height: 230px;
+            }
+
+            .featured-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .featured-card img {
+                height: 145px;
+                padding: 8px;
+            }
+
+            .featured-info {
+                padding: 11px;
+            }
+
+            .featured-info h3 {
+                font-size: 14px;
+            }
+
+            .featured-info .price {
+                font-size: 16px;
+            }
+
+            .featured-info a {
+                font-size: 12px;
+                padding: 10px 5px;
+            }
+
+            .cta {
+                margin: 0 12px 35px;
+                padding: 32px 15px;
+            }
+
+            .cta p {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 330px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-card img {
+                height: 220px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">PHONEX</a>
+
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="products.html">Products</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+			<a href="index.html" class="active">Log Out</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="tagline">WELCOME TO PHONEX</div>
+
+                <h1>
+                    Find Your<br>
+                    Perfect <span>Smartphone.</span>
+                </h1>
+
+                <p>
+                    Discover smartphones for your everyday needs at PHONEX.
+                    Explore modern designs, powerful features, and great
+                    options for school, work, gaming, and entertainment.
+                    Your next smartphone starts here.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="products.html" class="primary-button">
+                        Explore Products →
+                    </a>
+
+                    <a href="about.html" class="secondary-button">
+                        About PHONEX
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img
+                    src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=900&q=85"
+                    alt="Featured smartphone"
+                >
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h2>Quality Smartphones</h2>
+                <p>Explore a selection of smartphones for different needs and budgets.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">💙</div>
+                <h2>Convenient Shopping</h2>
+                <p>Browse our products and find the smartphone that suits your lifestyle.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🛠️</div>
+                <h2>Helpful Services</h2>
+                <p>Visit our Services page to learn more about the assistance we offer.</p>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <div class="section-heading">
+                <h2>Featured <span>Smartphones</span></h2>
+                <a href="products.html" class="view-all">View All Products →</a>
+            </div>
+
+            <div class="featured-grid">
+                <article class="featured-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=85"
+                        alt="iPhone 16 Pro Max"
+                    >
+
+                    <div class="featured-info">
+                        <p class="category">Apple</p>
+                        <h3>iPhone 16 Pro Max</h3>
+                        <p class="price">₱79,990</p>
+                        <a href="products.html">View Product</a>
+                    </div>
+                </article>
+
+                <article class="featured-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=85"
+                        alt="Samsung Galaxy S25 Ultra"
+                    >
+
+                    <div class="featured-info">
+                        <p class="category">Samsung</p>
+                        <h3>Galaxy S25 Ultra</h3>
+                        <p class="price">₱84,990</p>
+                        <a href="products.html">View Product</a>
+                    </div>
+                </article>
+
+                <article class="featured-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=85"
+                        alt="Redmi smartphone"
+                    >
+
+                    <div class="featured-info">
+                        <p class="category">Xiaomi</p>
+                        <h3>Redmi Note 14 Pro</h3>
+                        <p class="price">₱17,999</p>
+                        <a href="products.html">View Product</a>
+                    </div>
+                </article>
+
+                <article class="featured-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=85"
+                        alt="Google Pixel smartphone"
+                    >
+
+                    <div class="featured-info">
+                        <p class="category">Google</p>
+                        <h3>Google Pixel 9</h3>
+                        <p class="price">₱49,990</p>
+                        <a href="products.html">View Product</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Ready to Upgrade Your <span>Phone?</span></h2>
+            <p>
+                Explore our smartphone collection and find your next device
+                with PHONEX.
+            </p>
+
+            <a href="products.html" class="primary-button">
+                Shop Smartphones →
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <p><span>PHONEX</span> | Smartphones for a Better You</p>
+        <p>© 2026 PHONEX Mobile Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

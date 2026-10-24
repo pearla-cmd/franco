@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHONEX | About Us</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080d18;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100%;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #0c1424;
+            border-bottom: 1px solid #1d2a40;
+        }
+
+        .logo {
+            color: #38aaff;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #38aaff;
+        }
+
+        .about-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 55px 6%;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .about-text .label {
+            display: inline-block;
+            color: #38aaff;
+            background: #11243a;
+            border: 1px solid #21415f;
+            padding: 8px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 22px;
+        }
+
+        .about-text h1 {
+            font-size: clamp(30px, 4vw, 46px);
+            line-height: 1.2;
+            margin-bottom: 22px;
+        }
+
+        .about-text h1 span {
+            color: #38aaff;
+        }
+
+        .about-text p {
+            color: #a5b2c5;
+            font-size: 15px;
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+
+        .about-image {
+            width: 100%;
+            min-height: 350px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #263650;
+            background: #101a2b;
+        }
+
+        .about-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            object-fit: cover;
+        }
+
+        .values-section {
+            margin-top: 55px;
+        }
+
+        .values-heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .values-heading h2 {
+            font-size: clamp(24px, 3vw, 32px);
+            margin-bottom: 10px;
+        }
+
+        .values-heading h2 span {
+            color: #38aaff;
+        }
+
+        .values-heading p {
+            color: #9ba9bc;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .value-card {
+            background: #101a2b;
+            border: 1px solid #202f46;
+            border-radius: 13px;
+            padding: 25px 22px;
+            transition: 0.3s;
+        }
+
+        .value-card:hover {
+            border-color: #38aaff;
+            transform: translateY(-5px);
+        }
+
+        .value-card .icon {
+            font-size: 27px;
+            margin-bottom: 16px;
+        }
+
+        .value-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            color: #9ba9bc;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 900px) {
+            header {
+                padding: 20px 4%;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 25px;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                padding: 18px 12px;
+                gap: 16px;
+            }
+
+            .logo {
+                font-size: 25px;
+                text-align: center;
+            }
+
+            nav {
+                width: 100%;
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .about-section {
+                padding: 32px 16px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .about-text h1 {
+                font-size: 32px;
+            }
+
+            .about-text p {
+                font-size: 14px;
+            }
+
+            .about-image,
+            .about-image img {
+                min-height: 240px;
+            }
+
+            .values-section {
+                margin-top: 38px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .value-card {
+                padding: 22px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">PHONEX</a>
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="services.html">Services</a>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+			<a href="index.html" class="active">Log Out</a>
+        </nav>
+    </header>
+
+    <main class="about-section">
+
+        <section class="about-content">
+
+            <div class="about-text">
+                <span class="label">ABOUT PHONEX</span>
+
+                <h1>Technology Made <span>Simple.</span></h1>
+
+                <p>
+                    PHONEX is a smartphone store concept created for people
+                    looking for mobile devices that fit their needs, lifestyle,
+                    and budget.
+                </p>
+
+                <p>
+                    We aim to make it easier for customers to explore different
+                    smartphone models, compare features, and learn about the
+                    latest mobile technology in one convenient place.
+                </p>
+
+                <p>
+                    Whether you need a phone for school, work, communication,
+                    photography, or entertainment, PHONEX is designed to help
+                    you discover suitable options.
+                </p>
+            </div>
+
+            <div class="about-image">
+                <img
+                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1000&q=85"
+                    alt="Smartphone representing PHONEX"
+                >
+            </div>
+
+        </section>
+
+        <section class="values-section">
+
+            <div class="values-heading">
+                <h2>What We <span>Value</span></h2>
+                <p>Our priorities when helping customers explore mobile technology.</p>
+            </div>
+
+            <div class="values-grid">
+
+                <article class="value-card">
+                    <div class="icon">📱</div>
+                    <h3>Quality Choices</h3>
+                    <p>
+                        Explore a variety of smartphone models and features
+                        to find a device that matches your needs.
+                    </p>
+                </article>
+
+                <article class="value-card">
+                    <div class="icon">🤝</div>
+                    <h3>Customer Satisfaction</h3>
+                    <p>
+                        We aim to provide a convenient browsing experience
+                        and clear product information for every customer.
+                    </p>
+                </article>
+
+                <article class="value-card">
+                    <div class="icon">💡</div>
+                    <h3>Innovation</h3>
+                    <p>
+                        We celebrate mobile technology and make it easier
+                        to discover useful features and new devices.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

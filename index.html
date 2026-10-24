@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHONEX | Login</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    background:
+        radial-gradient(circle at 80% 20%, #123c63, transparent 40%),
+        linear-gradient(135deg, #080d18, #0d1a2d);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 38px;
+    background: #0c1424;
+    border: 1px solid #21466a;
+    border-radius: 18px;
+    box-shadow: 0 0 35px #168be033;
+}
+
+.logo {
+    color: #38aaff;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.line {
+    width: 55px;
+    height: 3px;
+    margin: 15px auto 25px;
+    background: #38aaff;
+    border-radius: 5px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #aab8cb;
+    margin-bottom: 28px;
+}
+
+label {
+    display: block;
+    color: #cbd5e1;
+    font-size: 13px;
+    margin: 17px 0 9px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    color: white;
+    background: #080d18;
+    border: 1px solid #263b55;
+    border-radius: 8px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #38aaff;
+    box-shadow: 0 0 10px #38aaff22;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 8px;
+    background: #168be0;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    background: #0873bf;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px #168be044;
+}
+
+#message {
+    text-align: center;
+    color: #ff7b91;
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+.footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 28px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 400px) {
+    .login-container {
+        padding: 28px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <div class="logo">PHONEX</div>
+    <div class="line"></div>
+
+    <h2>Welcome Back</h2>
+    <p class="subtitle">
+        Sign in to explore your next smartphone.
+    </p>
+
+    <form id="loginForm">
+        <label for="username">Username</label>
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter your username"
+            autocomplete="username"
+            required
+        >
+
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+        >
+
+        <button type="submit">LOGIN TO PHONEX →</button>
+        <p id="message" role="status"></p>
+    </form>
+
+    <div class="footer">
+        PHONEX MOBILE STORE © 2026
+    </div>
+</div>
+
+<script>
+document.getElementById("loginForm")
+.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const username =
+        document.getElementById("username").value.trim();
+    const password =
+        document.getElementById("password").value;
+
+    if (username === "prince" && password === "12345") {
+        sessionStorage.setItem("phonexLoggedIn", "true");
+        window.location.href = "home.html";
+    } else {
+        document.getElementById("message").textContent =
+            "Incorrect username or password.";
+    }
+});
+</script>
+
+</body>
+</html>
